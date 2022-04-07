@@ -1,35 +1,18 @@
 # AutoProfileJupCookie
 
-[![Github Actions Status](https://github.com/github_username/AutoProfileJupCookie/workflows/Build/badge.svg)](https://github.com/github_username/AutoProfileJupCookie/actions/workflows/build.yml)
+This repo contains a jupyter lab extension that is using webpack to bundle the extension code so that the front end widget can be written with Svelte.
 
-profile your data
+There are two main issues with the current version:
 
-
-
-## Requirements
-
-* JupyterLab >= 3.0
-
-## Install
-
-To install the extension, execute:
-
-```bash
-pip install AutoProfileJupCookie
-```
-
-## Uninstall
-
-To remove the extension, execute:
-
-```bash
-pip uninstall AutoProfileJupCookie
-```
+1. The current extension will not activate because it errors out with a `Provider not found` error to the console for the arugment to requries in [src/index.ts](index.ts)
+2. When the requires arugment is removed from [src/index.ts](index.ts), the extension will compile but does not show up at all in the jupyter UI. However the elements are added to the DOM. You can verify this by compiling the extension then searching for "Svelte thingie that says Hi" in the console elements. The svelte elements are added to the DOM but the extension is not showing up in the jupyter UI.
 
 
-## Contributing
+This extension is based off the cookiecutter found [https://github.com/jupyterlab/extension-cookiecutter-ts](here).
 
-### Development install
+
+
+## Development install
 
 Note: You will need NodeJS to build the extension package.
 
@@ -48,24 +31,7 @@ jupyter labextension develop . --overwrite
 jlpm build
 ```
 
-You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
-
-```bash
-# Watch the source directory in one terminal, automatically rebuilding when needed
-jlpm watch
-# Run JupyterLab in another terminal
-jupyter lab
-```
-
-With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
-
-By default, the `jlpm build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
-
-```bash
-jupyter lab build --minimize=False
-```
-
-### Development uninstall
+## Development uninstall
 
 ```bash
 pip uninstall AutoProfileJupCookie
@@ -74,7 +40,3 @@ pip uninstall AutoProfileJupCookie
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
 folder is located. Then you can remove the symlink named `AutoProfileJupCookie` within that folder.
-
-### Packaging the extension
-
-See [RELEASE](RELEASE.md)
