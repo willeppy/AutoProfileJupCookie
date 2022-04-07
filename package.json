@@ -32,7 +32,7 @@
     "build:prod": "jlpm clean && webpack --mode=production && jlpm build:labextension",
     "build:labextension": "jupyter labextension build .",
     "build:labextension:dev": "jupyter labextension build --development True .",
-    "build:lib": "webpack --mode=development",
+    "build:lib": "tsc && webpack --mode=development",
     "clean": "jlpm clean:lib",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:lintcache": "rimraf .eslintcache .stylelintcache",
@@ -97,7 +97,21 @@
   },
   "jupyterlab": {
     "extension": true,
-    "outputDir": "AutoProfileJupCookie/labextension"
+    "outputDir": "AutoProfileJupCookie/labextension",
+    "sharedPackages": {
+      "@jupyter-widgets/base": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@jupyterlab/notebook": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@lumino/widgets": {
+        "bundled": false,
+        "singleton": true
+      }
+    }
   },
   "jupyter-releaser": {
     "hooks": {
