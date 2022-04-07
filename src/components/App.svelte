@@ -5,7 +5,7 @@
 </script>
 
 <main>
-	<h1> Will Svelte thingie that says Hi {name}</h1>
+	<h1> Svelte thingie that says Hi {name}</h1>
 </main>
 
 <style>

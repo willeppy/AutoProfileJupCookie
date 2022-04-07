@@ -2,7 +2,7 @@ import type {
   JupyterFrontEnd,
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
-// import { INotebookTracker } from '@jupyterlab/notebook';
+import { INotebookTracker } from '@jupyterlab/notebook';
 
 
 import { Widget } from '@lumino/widgets';
@@ -18,7 +18,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   activate: (
     app: JupyterFrontEnd,
-    // notebookTracker: INotebookTracker,
+    notebookTracker: INotebookTracker,
   ) => {
 
     console.log("Activating AutoProfile extension...")
@@ -39,7 +39,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     });
 
   },
-  // requires: [INotebookTracker],
+  requires: [INotebookTracker],
 };
 
 export default plugin;
